@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login and Signup Page</title>
+  <link rel="stylesheet" href="logstyle.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Login and Signup</h1>
+    <div class="login">
+      <h2>Login</h2>
+      <form action="/login" method="post">
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <input type="submit" value="Login">
+      </form>
+    </div>
+    <div class="signup">
+      <h2>Signup</h2>
+      <form action="/signup" method="post">
+        <input type="text" name="username" placeholder="Username">
+        <input type="email" name="email" placeholder="Email">
+        <input type="password" name="password" placeholder="Password">
+        <input type="submit" value="Signup">
+      </form>
+    </div>
+  </div>
+  <script>
+    function login(username, password) {
+            if (username === "" || password === "") {
+        alert("Please enter a username and password.");
+        return;
+      }
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "/login");
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.send(JSON.stringify({
+        username: username,
+        password: password
+      }));
+
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+                    window.location.href = "/";
+        } else {
+          
+          alert("Invalid username or password.");
+        }
+      };
+    }
+
+    function signup(username, email, password) {
+            if (username === "" || email === "" || password === "") {
+        alert("Please enter a username, email, and password.");
+        return;
+      }
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "/signup");
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.send(JSON.stringify({
+        username: username,
+        email: email,
+        password: password
+      }));
+
+      xhr.onload = function() {
+        if (xhr.status === 201) {
+          alert("You have successfully created a new account.");
+          window.location.href = "/";
+        } else {
+          alert("There was an error creating your account. Please try again.");
+        }
+      };
+    }
+  </script>
+</body>
+</html>
