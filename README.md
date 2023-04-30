@@ -31,5 +31,5 @@ Update the task's information in the your storage when changes are made.
 
 Task Deletion:
 Include a delete button or icon next to each task in the task list.
-Remove the task from the user's task list in the your database when the delete button is clicked.
+Remove the task from the user's task list in the your storagee when the delete button is clicked.
 Update the task list display to remove the deleted task.
